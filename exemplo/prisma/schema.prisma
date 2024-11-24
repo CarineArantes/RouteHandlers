@@ -1,0 +1,18 @@
+// Configuração do gerador do Prisma Client
+generator client {
+  provider = "prisma-client-js" // Especifica que o Prisma Client será gerado em JavaScript/TypeScript
+}
+
+// Configuração da fonte de dados (datasource)
+datasource db {
+  provider = "sqlite"          // Define o tipo de banco de dados como SQLite
+  url      = "file:./dev.db"   // Define o local do arquivo SQLite (na mesma pasta que este arquivo)
+}
+
+// Definição do modelo User, que será mapeado para uma tabela no banco de dados
+model User {
+  id       Int   @id @default(autoincrement()) // Chave primária, valor único gerado automaticamente
+  email    String   @unique              // Campo obrigatório e único; não pode haver duplicatas de email
+  name     String                        // Nome do usuário; campo obrigatório, mas sem restrições adicionais
+}
+
